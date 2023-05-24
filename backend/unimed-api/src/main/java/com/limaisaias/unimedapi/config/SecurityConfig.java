@@ -27,7 +27,7 @@ public class SecurityConfig {
                 .and().authorizeRequests()
                 .requestMatchers(HttpMethod.POST, "/login").permitAll()
                 .requestMatchers("/**").authenticated()
-                .anyRequest().authenticated()
+                .anyRequest().authenticated().and().cors()
                 .and().addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class)
                 .build();
     }
@@ -41,5 +41,6 @@ public class SecurityConfig {
     public PasswordEncoder passwordEncoder() {
         return new NoOpPasswordEncoder();
     }
+
 
 }
