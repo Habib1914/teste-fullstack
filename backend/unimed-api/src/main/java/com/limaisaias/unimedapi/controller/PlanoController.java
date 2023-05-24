@@ -35,6 +35,18 @@ public class PlanoController {
         return ResponseEntity.noContent().build();
     }
 
+    @PutMapping("/{id}")
+    public ResponseEntity<Plano> atualizarPlano(@PathVariable Long id, @RequestBody Plano plano) {
+        Optional<Plano> planoExistente = planoService.buscarPorId(id);
+
+        if (planoExistente.isPresent()) {
+            Plano planoAtualizado = planoService.salvar(plano);
+            return ResponseEntity.ok(planoAtualizado);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
     @GetMapping
     public ResponseEntity<List<Plano>> listarTodosPlanos() {
         List<Plano> planos = planoService.listarTodos();

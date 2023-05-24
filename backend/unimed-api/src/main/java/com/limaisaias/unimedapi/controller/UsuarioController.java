@@ -1,5 +1,6 @@
 package com.limaisaias.unimedapi.controller;
 
+import com.limaisaias.unimedapi.model.Plano;
 import com.limaisaias.unimedapi.model.Usuario;
 import com.limaisaias.unimedapi.service.UsuarioService;
 import org.springframework.http.HttpStatus;
@@ -45,5 +46,17 @@ public class UsuarioController {
     public ResponseEntity<List<Usuario>> listarTodosUsuarios() {
         List<Usuario> usuarios = usuarioService.buscarTodosUsuarios();
         return ResponseEntity.ok(usuarios);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Usuario> atualizarUsuario(@PathVariable Long id, @RequestBody Usuario usuario) {
+        Optional<Usuario> usuarioOptional = usuarioService.buscarUsuarioPorId(id);
+
+        if (usuarioOptional.isPresent()) {
+            Usuario usuarioAtualizado = usuarioService.salvarUsuario(usuario);
+            return ResponseEntity.ok(usuarioAtualizado);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
 }

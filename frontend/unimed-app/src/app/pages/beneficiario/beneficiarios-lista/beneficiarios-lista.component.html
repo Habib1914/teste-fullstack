@@ -1,0 +1,66 @@
+<h1 class="mt-4">Beneficiarios</h1>
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item active">Consulta</li>
+</ol>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+
+            <div class="alert alert-success" role="alert" *ngIf="mensagemSucesso">
+                {{ mensagemSucesso }}
+            </div>
+
+            <div class="alert alert-danger" role="alert" *ngIf="mensagemErro">
+                {{ mensagemErro }}
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-2">
+            <button class="btn btn-warning" (click)="novoCadastro()">
+                <i class="fa fa-plus"></i> Novo
+            </button>
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table table-condensed table-hover">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nome</th>
+                        <th>Cpf</th>
+                        <th>Email</th>
+                        <th>Idade</th>
+                        <th>Plano</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let ben of beneficiarios">
+                        <td>{{ ben.id }}</td>
+                        <td>{{ ben.nome }}</td>
+                        <td>{{ ben.cpf }}</td>
+                        <td>{{ ben.email }}</td>
+                        <td>{{ ben.idade }}</td>
+                        <td>{{ ben.plano.nome }}</td>
+                        <td>
+                            <button class="btn btn-primary" routerLink="/beneficiarios/form/{{ben.id}}">
+                                <i class="fa fa-edit"></i>
+                            </button>
+
+                            <button class="btn btn-danger" (click)="deletarBeneficiario(ben)" >
+                                <i class="fa fa-trash"></i>
+                            </button>
+
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+</div>

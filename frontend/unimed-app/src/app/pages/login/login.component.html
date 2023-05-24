@@ -42,12 +42,6 @@
                                                 Enviar
                                             </button>
 
-                                            <!-- <button type="button" class="btn btn-success" 
-                                                    <!-- (click)="cadastrar()" -->
-                                                    <!-- *ngIf="cadastrando"> -->
-                                                Cadastrar
-                                            <!-- </button> -->
-
                                             <button type="button" (click)="cancelaCadastro()"
                                                     class="btn btn-danger ml-1" *ngIf="cadastrando">
                                                 Cancelar
@@ -58,9 +52,11 @@
 
                                 <div class="card-footer text-center">
                                     <div class="small">
-                                        <a href="#" (click)="preparaCadastrar($event)" >
-                                            Não possui Usuário? Cadastre-se!
-                                        </a>
+                                        
+                                            Usuário já cadastrado! 
+                                            login : admin 
+                                            senha : 123456
+                                    
                                     </div>
                                 </div>
                             </div>
